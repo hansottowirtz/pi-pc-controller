@@ -6,16 +6,14 @@ import RPi.GPIO as GPIO
 power_btn_pin = 17
 GPIO.setmode(GPIO.BCM)
 
-@click.group()
-def pipc():
-    pass
+cli = click.Group()
 
-@pipc.command('')
+@cli.command()
 def main():
-    print("Usage: turn-on, turn-off, status")
+    print("Usage: toggle, on, off, status")
 
-@pipc.command('turn-on')
-def turn_on():
+@cli.command()
+def toggle():
     try:
         GPIO.setup(power_btn_pin, GPIO.OUT)
         GPIO.output(power_btn_pin, GPIO.LOW)
@@ -24,6 +22,3 @@ def turn_on():
         pass
     finally:
         GPIO.cleanup()
-
-if __name__ == '__main__':
-    main()
