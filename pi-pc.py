@@ -10,7 +10,7 @@ GPIO.setmode(GPIO.BCM)
 def pipc():
     pass
 
-@pipc.command()
+@pipc.command('')
 def main():
     print("Usage: turn-on, turn-off, status")
 
