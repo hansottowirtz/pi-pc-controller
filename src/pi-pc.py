@@ -6,12 +6,10 @@ import RPi.GPIO as GPIO
 power_btn_pin = 17
 GPIO.setmode(GPIO.BCM)
 
-cli = click.Group()
-
-@cli.command()
-def main():
-    print("Usage: toggle, on, off, status")
-
+@click.group()
+def cli():
+    pass
+    
 @cli.command()
 def toggle():
     try:
