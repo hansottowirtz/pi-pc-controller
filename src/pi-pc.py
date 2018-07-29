@@ -9,7 +9,7 @@ GPIO.setmode(GPIO.BCM)
 @click.group()
 def cli():
     pass
-    
+
 @cli.command()
 def toggle():
     try:
@@ -20,3 +20,6 @@ def toggle():
         pass
     finally:
         GPIO.cleanup()
+        
+if __name__ == "__main__":
+  cli()
