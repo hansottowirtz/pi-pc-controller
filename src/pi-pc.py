@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import click
+import time
 import RPi.GPIO as GPIO
 
 power_btn_pin = 17
@@ -15,7 +16,7 @@ def toggle():
     try:
         GPIO.setup(power_btn_pin, GPIO.OUT)
         GPIO.output(power_btn_pin, GPIO.LOW)
-        sleep(.2)
+        time.sleep(.2)
         GPIO.cleanup(power_btn_pin)           
     except KeyboardInterrupt:
         pass
