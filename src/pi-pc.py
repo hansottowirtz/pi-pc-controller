@@ -15,11 +15,12 @@ def toggle():
     try:
         GPIO.setup(power_btn_pin, GPIO.OUT)
         GPIO.output(power_btn_pin, GPIO.LOW)
+        sleep(.2)
         GPIO.cleanup(power_btn_pin)           
     except KeyboardInterrupt:
         pass
     finally:
         GPIO.cleanup()
-        
+
 if __name__ == "__main__":
   cli()
