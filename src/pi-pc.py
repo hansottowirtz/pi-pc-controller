@@ -4,7 +4,10 @@ import click
 import time
 import RPi.GPIO as GPIO
 
-power_btn_pin = 17
+pwr_btn_pin = 17
+pwr_led_pin = 27
+on_btn_pin = 22
+
 GPIO.setmode(GPIO.BCM)
 
 @click.group()
@@ -17,7 +20,18 @@ def toggle():
         GPIO.setup(power_btn_pin, GPIO.OUT)
         GPIO.output(power_btn_pin, GPIO.LOW)
         time.sleep(.2)
-        GPIO.cleanup(power_btn_pin)           
+        # GPIO.cleanup(power_btn_pin)           
+    except KeyboardInterrupt:
+        pass
+    finally:
+        GPIO.cleanup()
+
+@cli.command()
+def status():
+    try:
+        GPIO.setup(status_btn_pin, GPIO.IN)
+        status = GPIO.input(pwr_led_pin)
+        print('on' if status else 'off')
     except KeyboardInterrupt:
         pass
     finally:
