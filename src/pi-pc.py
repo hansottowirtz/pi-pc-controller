@@ -17,8 +17,8 @@ def cli():
 @cli.command()
 def toggle():
     try:
-        GPIO.setup(power_btn_pin, GPIO.OUT)
-        GPIO.output(power_btn_pin, GPIO.LOW)
+        GPIO.setup(pwr_btn_pin, GPIO.OUT)
+        GPIO.output(pwr_btn_pin, GPIO.LOW)
         time.sleep(.2)
         # GPIO.cleanup(power_btn_pin)           
     except KeyboardInterrupt:
@@ -29,7 +29,7 @@ def toggle():
 @cli.command()
 def status():
     try:
-        GPIO.setup(status_btn_pin, GPIO.IN)
+        GPIO.setup(pwr_led_pin, GPIO.IN)
         status = GPIO.input(pwr_led_pin)
         print('on' if status else 'off')
     except KeyboardInterrupt:
