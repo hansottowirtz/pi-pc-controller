@@ -37,5 +37,17 @@ def status():
     finally:
         GPIO.cleanup()
 
+@cli.command('force-quit')
+def force_quit():
+    try:
+        GPIO.setup(pwr_btn_pin, GPIO.OUT)
+        GPIO.output(pwr_btn_pin, GPIO.LOW)
+        time.sleep(8)
+        # GPIO.cleanup(power_btn_pin)           
+    except KeyboardInterrupt:
+        pass
+    finally:
+        GPIO.cleanup()
+
 if __name__ == "__main__":
   cli()
